@@ -88,9 +88,10 @@ public class TollCalculator
 		if (month == 1 && day == 1 ||
 			   month == 4 && day == 30 ||
 			   month == 5 && day == 1 ||
-			   month == 6 && (day == 5 || day == 6) ||
+			   month == 6 && (day == 5 || day == 6 || (19 <= day && day <= 25 && date.DayOfWeek == DayOfWeek.Friday)) ||
 			   month == 7 ||
-			   month == 11 && day == 1 ||
+			   month == 10 && (day == 29 || day == 30) && date.DayOfWeek == DayOfWeek.Friday ||
+			   month == 11 && (1 <= day && day <= 5 && date.DayOfWeek == DayOfWeek.Friday) ||
 			   month == 12 && (day == 24 || day == 25 || day == 26 || day == 31))
 		{
 			return true;
@@ -99,12 +100,14 @@ public class TollCalculator
 			date.Month == easterSunday.AddDays(-2).Month && date.Day == easterSunday.AddDays(-2).Day ||
 			date.Month == easterSunday.AddDays(1).Month && date.Day == easterSunday.AddDays(1).Day ||
 			date.Month == easterSunday.AddDays(39).Month && date.Day == easterSunday.AddDays(39).Day ||
-			date.Month == easterSunday.AddDays(40).Month && date.Day == easterSunday.AddDays(40).Day ||
-			date.Month == easterSunday.AddDays(68).Month && date.Day == easterSunday.AddDays(68).Day ||
-			date.Month == easterSunday.AddDays(201).Month && date.Day == easterSunday.AddDays(201).Day)
+			date.Month == easterSunday.AddDays(40).Month && date.Day == easterSunday.AddDays(40).Day)
 		{
 			return true;
 		}
+
+		
+		
+
 		return false;
 	}
 
